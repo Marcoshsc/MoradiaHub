@@ -12,7 +12,7 @@ export const notFoundHandler: RequestHandler<NotFoundPage, void> = (req, res) =>
   })
 }
 
-export const internalServerErrorHandler: ErrorRequestHandler<ErrorBody, void> = (err, _, res, next) => {
+export const internalServerErrorHandler: ErrorRequestHandler<ErrorBody, void> = (err, _, res) => {
   res.status(500).json({
     error: err.message
   })
