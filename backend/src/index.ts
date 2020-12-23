@@ -2,7 +2,7 @@ import 'reflect-metadata'
 import express from 'express'
 import * as dotenv from 'dotenv'
 import { createTypeORMConnection } from './typeorm/connection'
-import { configureExpress, setupExpressRoutes } from './express/setup'
+import { configureExpress, setupExpressRoutes, setupHandlers } from './express/setup'
 
 dotenv.config()
 
@@ -14,6 +14,7 @@ createTypeORMConnection().then(() => {
 
   configureExpress(app)
   setupExpressRoutes(app)
+  setupHandlers(app)
 
   app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
 })
