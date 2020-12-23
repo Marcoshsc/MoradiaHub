@@ -1,5 +1,5 @@
 enum LoginEndpoints {
-  LOGIN = '/login'
+  LOGIN = '/'
 }
 
 export default LoginEndpoints
