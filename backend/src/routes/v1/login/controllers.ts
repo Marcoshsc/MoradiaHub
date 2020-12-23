@@ -1,5 +1,5 @@
-import { RequestHandler } from '../../common/controllers'
-import { LoginDTO, LoginResponseDTO } from '../../dto/login'
+import { RequestHandler } from '../../../common/controllers'
+import { LoginDTO, LoginResponseDTO } from '../../../dto/login'
 
 export const loginController: RequestHandler<LoginResponseDTO, LoginDTO> = (req, res) => {
   const { email, password } = req.body

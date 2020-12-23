@@ -2,8 +2,8 @@ import { Express } from 'express'
 import cors from 'cors'
 import bodyParser from 'body-parser'
 
-import loginRoutes from '../routes/login/routes'
-import userRoutes from '../routes/user/routes'
+import loginRoutes from '../routes/v1/login/routes'
+import userRoutes from '../routes/v1/user/routes'
 import { getVersionatedUrl } from '../utils/urlUtils'
 
 export const configureExpress = (app: Express): void => {
