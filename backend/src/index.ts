@@ -1,6 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import bodyParser from 'body-parser'
+import 'reflect-metadata'
 import loginRoutes from './routes/login/routes'
 
 const app = express()
