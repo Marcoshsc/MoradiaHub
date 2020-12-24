@@ -8,6 +8,6 @@ export const createTypeORMConnection = (): Promise<Connection> =>
     username: process.env.DBUSER,
     password: process.env.DBPASSWORD,
     database: process.env.DBNAME,
-    entities: [__dirname + '/model/*.ts'],
+    entities: ['src/model/*.ts'],
     synchronize: true
   })
