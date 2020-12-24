@@ -1,5 +1,6 @@
 enum LoginEndpoints {
-  LOGIN = '/'
+  LOGIN = '/',
+  BASE_URL = '/login'
 }
 
 export default LoginEndpoints
