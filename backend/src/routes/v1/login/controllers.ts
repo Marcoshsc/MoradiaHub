@@ -1,7 +1,15 @@
 import { RequestHandler } from '../../../common/controllers'
-import { LoginDTO, LoginResponseDTO } from '../../../dto/login'
+import { LoginDTO } from '../../../dto/login'
+import { generateJwt } from '../../../services/authentication'
+import { loginUser } from '../../../services/user'
 
-export const loginController: RequestHandler<LoginResponseDTO, LoginDTO> = (req, res) => {
+export const loginController: RequestHandler<void, LoginDTO> = (req, res, next) => {
   const { email, password } = req.body
-  res.status(200).json({ message: `Email: ${email}, Password: ${password}` })
+  loginUser(email, password)
+    .then((user) => {
+      const jwtToken = generateJwt(user.id)
+      res.setHeader('token', jwtToken)
+      res.status(200).send()
+    })
+    .catch((err) => next(err))
 }
