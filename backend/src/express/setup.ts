@@ -6,6 +6,8 @@ import loginRoutes from '../routes/v1/login/routes'
 import userRoutes from '../routes/v1/user/routes'
 import { getVersionatedUrl } from '../utils/urlUtils'
 import { internalServerErrorHandler, notFoundHandler } from './globalHandlers'
+import { UserEndpoints } from '../routes/v1/user/endpoints'
+import LoginEndpoints from '../routes/v1/login/endpoints'
 
 export const configureExpress = (app: Express): void => {
   app.use(cors())
@@ -13,8 +15,8 @@ export const configureExpress = (app: Express): void => {
 }
 
 export const setupExpressRoutes = (app: Express): void => {
-  app.use(getVersionatedUrl('/login'), loginRoutes)
-  app.use(getVersionatedUrl('/user'), userRoutes)
+  app.use(getVersionatedUrl(LoginEndpoints.BASE_URL), loginRoutes)
+  app.use(getVersionatedUrl(UserEndpoints.BASE_URL), userRoutes)
 }
 
 export const setupHandlers = (app: Express): void => {
