@@ -1,3 +1,5 @@
 export enum UserEndpoints {
-  INSERT = '/'
+  INSERT = '/',
+  GET_ALL = '/',
+  BASE_URL = '/users'
 }
