@@ -23,7 +23,7 @@ export class User {
   })
   email: string
 
-  @Column()
+  @Column('text')
   password: string
 
   @Column({
