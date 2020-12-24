@@ -4,7 +4,7 @@ import { insertUser, getAllUsers } from '../../../services/user'
 
 export const insert: RequestHandler<UserDTO, UserDTO> = (req, res, next) => {
   insertUser(req.body)
-    .then((user) => res.status(200).json(user))
+    .then((user) => res.status(201).json(user))
     .catch((err) => next(err))
 }
 
