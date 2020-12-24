@@ -1,8 +1,8 @@
 import * as jwt from 'jsonwebtoken'
 
 export const validateJwt = (token: string): number => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const secret = process.env.JWTSECRET as string
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { userId } = <any>jwt.verify(token, secret)
   return userId
 }
