@@ -1,8 +1,10 @@
 import { Router } from 'express'
-import { insert } from './controllers'
+import { getAll, insert } from './controllers'
+import { UserEndpoints } from './endpoints'
 
 const userRouter = Router()
 
-userRouter.post('/', insert)
+userRouter.get(UserEndpoints.GET_ALL, getAll)
+userRouter.post(UserEndpoints.INSERT, insert)
 
 export default userRouter
