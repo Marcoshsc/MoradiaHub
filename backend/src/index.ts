@@ -5,6 +5,7 @@ dotenv.config()
 
 import express from 'express'
 import { createTypeORMConnection } from './typeorm/connection'
+import './redis/client'
 import { configureExpress, setupExpressRoutes, setupHandlers } from './express/setup'
 
 createTypeORMConnection().then(() => {
