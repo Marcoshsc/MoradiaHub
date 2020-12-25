@@ -37,4 +37,10 @@ export class User {
     default: (): string => 'now()'
   })
   updatedAt?: Date
+
+  @Column({
+    length: 20,
+    nullable: true
+  })
+  validationEndpoint?: string
 }
