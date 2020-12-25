@@ -6,8 +6,7 @@ const transporter = nodemailer.createTransport({
   auth: {
     user: process.env.SMTPUSER,
     pass: process.env.SMTPPASSWORD
-  },
-  tls: { rejectUnauthorized: false }
+  }
 })
 
 export default transporter
