@@ -10,6 +10,7 @@ import {
   badRequestErrorHandler,
   internalServerErrorHandler,
   notFoundHandler,
+  rateLimitHandler,
   unauthorizedErrorHandler
 } from './globalHandlers'
 import { UserEndpoints } from '../routes/v1/user/endpoints'
@@ -17,6 +18,7 @@ import LoginEndpoints from '../routes/v1/login/endpoints'
 
 export const configureExpress = (app: Express): void => {
   app.use(cors())
+  app.use(rateLimitHandler)
   app.use(bodyParser.json())
   app.use(authenticationHandler)
 }
