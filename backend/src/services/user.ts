@@ -3,10 +3,7 @@ import { getDTOFromUser, getUserFromDTO, UserDTO, UserWithAdditionalInfoDTO } fr
 import { User } from '../model/user'
 import randomstring from 'randomstring'
 import bcrypt from 'bcrypt'
-import { sendSimpleMail } from './mailService'
-import { MailTemplates } from '../mail/template'
-import { getFullUrl } from '../utils/urlUtils'
-import { UserEndpoints } from '../routes/v1/user/endpoints'
+import { HttpError } from '../common/errors'
 
 export const getAllUsers = async (): Promise<UserDTO[]> => {
   const userRepository = getRepository(User)
@@ -18,16 +15,20 @@ export const loginUser = async (email: string, password: string): Promise<UserDT
   const userRepository = getRepository(User)
 
   const user = await userRepository.findOne({ email: email })
-  if (!user) throw new Error('Not found user.')
+  if (!user) throw new HttpError(401, 'Not found user.')
 
   const valid = await bcrypt.compare(password, user.password)
-  if (!valid) throw new Error('Invalid Password.')
+  if (!valid) throw new HttpError(401, 'Invalid Password.')
 
   return getDTOFromUser(user)
 }
 
 export const insertUser = async (dto: UserDTO): Promise<UserWithAdditionalInfoDTO> => {
   const user = getUserFromDTO(dto)
+
+  if (user.name.length > 100) throw new HttpError(400, 'User name should not exceed 100 characters.')
+  if (user.phone.length > 15) throw new HttpError(400, 'User phone should not exceed 15 characters.')
+  if (user.email.length > 100) throw new HttpError(400, 'User email should not exceed 100 characters.')
 
   const password = user.password
   const salt = await bcrypt.genSalt()
@@ -39,7 +40,13 @@ export const insertUser = async (dto: UserDTO): Promise<UserWithAdditionalInfoDT
   user.password = hashedPassword
 
   const userRepository = getRepository(User)
-  const savedUser = await userRepository.save(user)
+  const exists = await userRepository.count({ email: user.email })
+  if (exists > 0) throw new HttpError(400, 'Email already present in the database.')
 
-  return { user: getDTOFromUser(savedUser), validationEndpoint: savedUser.validationEndpoint as string }
+  try {
+    const savedUser = await userRepository.save(user)
+    return { user: getDTOFromUser(savedUser), validationEndpoint: savedUser.validationEndpoint as string }
+  } catch (err) {
+    throw new HttpError(400, 'Database error')
+  }
 }
