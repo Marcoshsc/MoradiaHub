@@ -7,7 +7,7 @@ export const loginController: RequestHandler<void, LoginDTO> = (req, res, next) 
   const { email, password } = req.body
   loginUser(email, password)
     .then((user) => {
-      const jwtToken = generateJwt(user.id)
+      const jwtToken = generateJwt(user.id as number)
       res.setHeader('token', jwtToken)
       res.status(200).send()
     })
