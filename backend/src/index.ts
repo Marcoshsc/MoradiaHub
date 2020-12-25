@@ -1,10 +1,11 @@
 import 'reflect-metadata'
-import express from 'express'
 import * as dotenv from 'dotenv'
-import { createTypeORMConnection } from './typeorm/connection'
-import { configureExpress, setupExpressRoutes, setupHandlers } from './express/setup'
 
 dotenv.config()
+
+import express from 'express'
+import { createTypeORMConnection } from './typeorm/connection'
+import { configureExpress, setupExpressRoutes, setupHandlers } from './express/setup'
 
 createTypeORMConnection().then(() => {
   console.log('Database connection established!')
