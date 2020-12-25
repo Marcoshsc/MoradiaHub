@@ -2,7 +2,7 @@ import { User } from '../model/user'
 import { getFormattedTimeStamp } from '../utils/date'
 
 export interface UserDTO {
-  id: number
+  id?: number
   email: string
   name: string
   phone: string
