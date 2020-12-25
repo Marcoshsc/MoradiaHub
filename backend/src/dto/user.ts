@@ -11,12 +11,19 @@ export interface UserDTO {
   updatedAt?: string
 }
 
+export interface UserWithAdditionalInfoDTO {
+  user: UserDTO
+  validationEndpoint: string
+}
+
 export const getDTOFromUser = (entity: User): UserDTO => ({
-  ...entity,
   id: entity.id as number,
   createdAt: getFormattedTimeStamp(entity.createdAt as Date),
   updatedAt: getFormattedTimeStamp(entity.updatedAt as Date),
-  password: undefined
+  password: undefined,
+  email: entity.email,
+  name: entity.name,
+  phone: entity.phone
 })
 
 export const getUserFromDTO = (dto: UserDTO): User => ({
