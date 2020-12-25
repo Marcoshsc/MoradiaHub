@@ -1,5 +1,10 @@
 import redisClient from '../redis/client'
 
+/**
+ * Parameters to the application rate limiting. The first position represents the number of requests allowed and
+ * the second represents the time window. For example, [15, 10] means that 15 requests can be made in a 10 second
+ * time window, for a single IP.
+ */
 export const RATELIMIT_PARAMETERS = [15, 10]
 
 /**
