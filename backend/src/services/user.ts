@@ -5,12 +5,21 @@ import randomstring from 'randomstring'
 import bcrypt from 'bcrypt'
 import { HttpError } from '../common/errors'
 
+/**
+ * Get all the users from the database.
+ */
 export const getAllUsers = async (): Promise<UserDTO[]> => {
   const userRepository = getRepository(User)
   const users = await userRepository.find()
   return users.map((user) => getDTOFromUser(user))
 }
 
+/**
+ * Log-In a user into the application, and return it if successfully logged;
+ * @param email the user email
+ * @param password the user password
+ * @returns the logged user
+ */
 export const loginUser = async (email: string, password: string): Promise<UserDTO> => {
   const userRepository = getRepository(User)
 
@@ -23,6 +32,11 @@ export const loginUser = async (email: string, password: string): Promise<UserDT
   return getDTOFromUser(user)
 }
 
+/**
+ * Insert the given user in the database.
+ * @param dto the user info to be inserted
+ * @returns the inserted user with some additional info, such as the mail verification key.
+ */
 export const insertUser = async (dto: UserDTO): Promise<UserWithAdditionalInfoDTO> => {
   const user = getUserFromDTO(dto)
 
