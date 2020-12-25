@@ -3,10 +3,28 @@ import { ErrorBody } from '../common/dto'
 import { HttpError } from '../common/errors'
 import LoginEndpoints from '../routes/v1/login/endpoints'
 import { generateJwt, validateJwt } from '../services/authentication'
+import { isOverLimit, RATELIMIT_PARAMETERS } from '../services/rateLimitServices'
 import { getVersionatedUrl } from '../utils/urlUtils'
 
 export interface NotFoundPage extends ErrorBody {
   endpoint: string
+}
+
+export const rateLimitHandler: RequestHandler<unknown, unknown> = (req, res, next) => {
+  isOverLimit(req.ip)
+    .then(([overLimit, total, remaining]) => {
+      res.setHeader('RateLimit-Limit', `${total}, ${RATELIMIT_PARAMETERS[0]}; window=${RATELIMIT_PARAMETERS[1]}`)
+      res.setHeader('RateLimit-Reset', remaining)
+      if (overLimit) {
+        res.setHeader('Retry-After', remaining)
+        res.setHeader('RateLimit-Remaining', 0)
+        res.status(429).send()
+        return
+      }
+      res.setHeader('RateLimit-Remaining', RATELIMIT_PARAMETERS[0] - total)
+      next()
+    })
+    .catch((err) => next(err))
 }
 
 export const authenticationHandler: RequestHandler<ErrorBody, void> = (req, res, next) => {
