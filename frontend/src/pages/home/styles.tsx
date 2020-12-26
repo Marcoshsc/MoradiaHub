@@ -84,6 +84,10 @@ export const Title = styled.h1`
   font-size: 28px;
   font-weight: 200;
   animation: ${fadeInSecond} 3s ease-in;
+
+  @media (max-width: 600px) {
+    margin: 15px;
+  }
 `
 
 export const LocationForm = styled.form`
@@ -95,15 +99,23 @@ export const LocationForm = styled.form`
   margin-right: auto;
   animation: ${fadeInThird} 4s ease-in;
 
-  @media (max-width: 600px) {
+  @media (max-width: 650px) {
     grid-template-columns: 400px;
+  }
+
+  @media (max-width: 485px) {
+    grid-template-columns: 350px;
+  }
+
+  @media (max-width: 429px) {
+    grid-template-columns: 330px;
   }
 
   @media (max-width: 414px) {
     grid-template-columns: 300px;
   }
 
-  @media (max-width: 320px) {
+  @media (max-width: 380px) {
     grid-template-columns: 250px;
     gap: 10px;
     padding: 10px;
@@ -121,7 +133,7 @@ export const LocationTextField = styled.input`
     border-color: rgba(193, 194, 190, 1);
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 650px) {
     text-align: center;
   }
 `
@@ -147,7 +159,7 @@ export const SearchButton = styled.button`
     border-color: #48aa9f;
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 650px) {
     margin-left: auto;
     margin-right: auto;
   }
