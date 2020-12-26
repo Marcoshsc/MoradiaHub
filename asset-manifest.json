@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/MoradiaHub/static/css/main.4c41df7f.chunk.css",
-    "main.js": "/MoradiaHub/static/js/main.32925861.chunk.js",
-    "main.js.map": "/MoradiaHub/static/js/main.32925861.chunk.js.map",
+    "main.js": "/MoradiaHub/static/js/main.adbd8d92.chunk.js",
+    "main.js.map": "/MoradiaHub/static/js/main.adbd8d92.chunk.js.map",
     "runtime-main.js": "/MoradiaHub/static/js/runtime-main.71f9c4be.js",
     "runtime-main.js.map": "/MoradiaHub/static/js/runtime-main.71f9c4be.js.map",
-    "static/js/2.d6808a12.chunk.js": "/MoradiaHub/static/js/2.d6808a12.chunk.js",
-    "static/js/2.d6808a12.chunk.js.map": "/MoradiaHub/static/js/2.d6808a12.chunk.js.map",
+    "static/js/2.cb7c1d8e.chunk.js": "/MoradiaHub/static/js/2.cb7c1d8e.chunk.js",
+    "static/js/2.cb7c1d8e.chunk.js.map": "/MoradiaHub/static/js/2.cb7c1d8e.chunk.js.map",
     "index.html": "/MoradiaHub/index.html",
     "static/css/main.4c41df7f.chunk.css.map": "/MoradiaHub/static/css/main.4c41df7f.chunk.css.map",
-    "static/js/2.d6808a12.chunk.js.LICENSE.txt": "/MoradiaHub/static/js/2.d6808a12.chunk.js.LICENSE.txt"
+    "static/js/2.cb7c1d8e.chunk.js.LICENSE.txt": "/MoradiaHub/static/js/2.cb7c1d8e.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.71f9c4be.js",
-    "static/js/2.d6808a12.chunk.js",
+    "static/js/2.cb7c1d8e.chunk.js",
     "static/css/main.4c41df7f.chunk.css",
-    "static/js/main.32925861.chunk.js"
+    "static/js/main.adbd8d92.chunk.js"
   ]
 }
