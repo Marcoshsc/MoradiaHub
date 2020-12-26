@@ -4,7 +4,7 @@ import MainComponent from './pages/main'
 
 const App: React.FunctionComponent = () => {
   return (
-    <Router>
+    <Router basename="/">
       <MainComponent />
     </Router>
   )
