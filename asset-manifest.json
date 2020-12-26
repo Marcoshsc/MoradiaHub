@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/MoradiaHub/static/css/main.4c41df7f.chunk.css",
-    "main.js": "/MoradiaHub/static/js/main.7e950ca7.chunk.js",
-    "main.js.map": "/MoradiaHub/static/js/main.7e950ca7.chunk.js.map",
+    "main.js": "/MoradiaHub/static/js/main.175c2709.chunk.js",
+    "main.js.map": "/MoradiaHub/static/js/main.175c2709.chunk.js.map",
     "runtime-main.js": "/MoradiaHub/static/js/runtime-main.71f9c4be.js",
     "runtime-main.js.map": "/MoradiaHub/static/js/runtime-main.71f9c4be.js.map",
     "static/js/2.5e2f7589.chunk.js": "/MoradiaHub/static/js/2.5e2f7589.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.71f9c4be.js",
     "static/js/2.5e2f7589.chunk.js",
     "static/css/main.4c41df7f.chunk.css",
-    "static/js/main.7e950ca7.chunk.js"
+    "static/js/main.175c2709.chunk.js"
   ]
 }
