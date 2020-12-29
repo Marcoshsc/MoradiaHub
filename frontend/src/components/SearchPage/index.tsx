@@ -2,6 +2,8 @@ import { useHistory, useLocation } from 'react-router-dom'
 import { MainDiv, ResultsDiv, SearchDiv } from './styles'
 import React from 'react'
 import SearchForm, { SearchFormValues } from './SearchForm'
+import { EnumGender, getGender } from './Select/Gender'
+import { EnumPeople, getPeople } from './Select/People'
 
 const SearchPage: React.FC = () => {
   const useQuery = () => new URLSearchParams(useLocation().search)
@@ -10,12 +12,12 @@ const SearchPage: React.FC = () => {
 
   const city = query.get('city')
   const neighbourhood = query.get('neighbourhood')
-  const gender = query.get('gender') || 'Todos'
+  const gender = getGender(query.get('gender'))
   const minValue = query.get('minValue')
   const maxValue = query.get('maxValue')
   const minArea = query.get('minArea')
   const maxArea = query.get('maxArea')
-  const people = query.get('people')
+  const people = getPeople(query.get('people'))
 
   const handleSubmitForm = ({
     city,
@@ -27,10 +29,12 @@ const SearchPage: React.FC = () => {
     neighbourhood,
     people
   }: SearchFormValues) => {
+    console.log(gender)
     history.push(
-      `/search?city=${city}&neighbourhood=${neighbourhood}&gender=${gender}` +
+      `/search?city=${city}&neighbourhood=${neighbourhood}&gender=${EnumGender[gender]}` +
         `&maxArea=${maxArea === null ? '' : maxArea}&minArea=${minArea === null ? '' : minArea}` +
-        `&maxValue=${maxValue === null ? '' : maxValue}&minValue=${minValue === null ? '' : minValue}&people=${people}`
+        `&maxValue=${maxValue === null ? '' : maxValue}&minValue=${minValue === null ? '' : minValue}` +
+        `&people=${EnumPeople[people]}`
     )
   }
 

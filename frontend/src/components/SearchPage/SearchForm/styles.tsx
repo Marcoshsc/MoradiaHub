@@ -22,11 +22,16 @@ export const SearchForm = styled.form`
 export const TextField = styled.input`
   width: 100%;
   padding: 10px;
-  border: 2px solid rgba(193, 194, 190, 0.6);
-  border-radius: 10px;
+  border: 1px solid hsl(0, 0%, 70%);
+  border-radius: 4px;
   outline: none;
   font-size: 14px;
+
+  :hover {
+    border-color: hsl(0, 0%, 50%);
+  }
+
   :focus {
-    border-color: rgba(193, 194, 190, 1);
+    border-color: hsl(0, 0%, 20%);
   }
 `

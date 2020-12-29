@@ -3,6 +3,8 @@ import { Controller, useForm } from 'react-hook-form'
 import AreaField from '../../TextFields/AreaField'
 import CurrencyField from '../../TextFields/CurrencyField'
 import FieldWithLabel from '../../TextFields/FieldWithLabel'
+import GenderSelect, { EnumGender } from '../Select/Gender'
+import PeopleSelect, { EnumPeople } from '../Select/People'
 import { SearchComponentDiv, SearchForm, TextField } from './styles'
 
 interface SearchFormProps {
@@ -13,12 +15,12 @@ interface SearchFormProps {
 export interface SearchFormValues {
   city: string
   neighbourhood: string
-  gender: string
+  gender: EnumGender
   minValue: string
   maxValue: string
   minArea: string
   maxArea: string
-  people: string
+  people: EnumPeople
 }
 
 export default function SearchFormComponent({ onSubmit, values }: SearchFormProps): JSX.Element {
@@ -26,7 +28,7 @@ export default function SearchFormComponent({ onSubmit, values }: SearchFormProp
 
   const city = values.city
   const neighbourhood = values.neighbourhood
-  const gender = values.gender || 'Todos'
+  const gender = values.gender
   const minValue = values.minValue
   const maxValue = values.maxValue
   const minArea = values.minArea
@@ -37,18 +39,51 @@ export default function SearchFormComponent({ onSubmit, values }: SearchFormProp
     <SearchForm onSubmit={handleSubmit(onSubmit)}>
       <SearchComponentDiv>
         <FieldWithLabel labelFor="city-field" label="Cidade">
-          <TextField ref={register} value={city} id="city-field" type="text" name="city" placeholder="Cidade" />
+          <TextField ref={register} defaultValue={city} id="city-field" type="text" name="city" placeholder="Cidade" />
         </FieldWithLabel>
         <FieldWithLabel labelFor="neighbourhood-field" label="Bairro">
-          <TextField ref={register} id="neighbourhood-field" type="text" name="neighbourhood" placeholder="Bairro" />
+          <TextField
+            ref={register}
+            defaultValue={neighbourhood}
+            id="neighbourhood-field"
+            type="text"
+            name="neighbourhood"
+            placeholder="Bairro"
+          />
         </FieldWithLabel>
       </SearchComponentDiv>
       <SearchComponentDiv>
         <FieldWithLabel labelFor="gender-field" label="Gênero">
-          <TextField ref={register} id="gender-field" type="number" name="people" placeholder="Gênero" />
+          <Controller
+            name="gender"
+            defaultValue={gender}
+            control={control}
+            render={({ onChange, value }) => (
+              <GenderSelect
+                SelectProps={{
+                  id: 'gender-field',
+                  onChange: (e) => onChange(e.value),
+                  value: value
+                }}
+              />
+            )}
+          />
         </FieldWithLabel>
         <FieldWithLabel labelFor="people-field" label="Pessoas/Quarto">
-          <TextField ref={register} type="text" id="people-field" name="gender" placeholder="Valor" />
+          <Controller
+            name="people"
+            defaultValue={people}
+            control={control}
+            render={({ onChange, value }) => (
+              <PeopleSelect
+                SelectProps={{
+                  id: 'people-field',
+                  onChange: (e) => onChange(e.value),
+                  value: value
+                }}
+              />
+            )}
+          />
         </FieldWithLabel>
       </SearchComponentDiv>
       <SearchComponentDiv>
