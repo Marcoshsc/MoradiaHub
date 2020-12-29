@@ -61,7 +61,7 @@ export const BackGroundImage = styled.img`
   position: absolute;
   z-index: -1;
   animation: ${fadeInImage} 1s linear;
-  box-shadow: 0 0 10px 10px #e2dbc1;
+  box-shadow: 0 0 10px 10px #e6e3e3;
 `
 
 export const ImageContainer = styled.div`

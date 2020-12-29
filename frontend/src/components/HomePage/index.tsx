@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React from 'react'
 import { useHistory } from 'react-router-dom'
 import {
   BackGroundImage,
@@ -12,16 +12,13 @@ import {
 } from './styles'
 
 const Home: React.FC = () => {
-  const history = useHistory()
-
-  const [city, setCity] = useState('')
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCity(e.target.value)
+  interface FormValues {
+    city: string
   }
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+  const history = useHistory()
+
+  const handleSubmit = ({ city }: FormValues) => {
     history.push(`/search?city=${city}`)
   }
 
@@ -31,14 +28,8 @@ const Home: React.FC = () => {
         <Logo src="moradiahub.png" alt="Moradia Hub Logo" />
       </ImageContainer>
       <Title>Encontre uma moradia de maneira simples.</Title>
-      <LocationForm onSubmit={handleSubmit}>
-        <LocationTextField
-          type="text"
-          placeholder="Procure por uma cidade"
-          maxLength={50}
-          value={city}
-          onChange={handleChange}
-        />
+      <LocationForm>
+        <LocationTextField name="city" type="text" placeholder="Procure por uma cidade" maxLength={50} />
         <SearchButton type="submit">Buscar moradias</SearchButton>
       </LocationForm>
       <BackGroundImage src="homebackground.jpg" alt="Moradia Hub Home Background" />

@@ -14,8 +14,6 @@
     "camelcase": "warn",
     "comma-spacing": "warn",
     "capitalized-comments": "warn",
-    "indent": ["error", 2],
-    "max-len": ["error", 120],
-    "space-before-function-paren": "warn"
+    "max-len": ["error", 120]
   }
 }
