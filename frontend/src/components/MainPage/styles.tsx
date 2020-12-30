@@ -29,12 +29,14 @@ export const NavBarLink = styled(Link)`
   font-size: 20px;
   padding: 25px;
   padding-top: 15px;
-  color: black;
+  /* color: black; */
+  font-weight: 500;
+  color: #20123a;
   text-decoration: underline;
   text-decoration-color: transparent;
   transition: 500ms;
   :hover {
-    text-decoration-color: black;
+    text-decoration-color: #20123a;
   }
 
   @media (max-width: 350px) {

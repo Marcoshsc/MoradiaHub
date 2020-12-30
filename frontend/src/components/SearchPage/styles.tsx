@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const MainDiv = styled.div`
   width: 100%;
   background-color: white;
-  border-top: 4px solid #2684ff;
+  border-top: 2px solid #2684ff;
   height: 100%;
   overflow: auto;
   display: flex;
@@ -25,6 +25,6 @@ export const SearchTitle = styled.h2`
 export const ResultsDiv = styled.div`
   width: 100%;
   flex: 1 0;
-  background-color: #f9f9fa;
-  border-top: 4px solid #2684ff;
+  background-color: #fafafa;
+  border-top: 2px solid #2684ff;
 `
