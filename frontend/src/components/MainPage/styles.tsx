@@ -7,18 +7,22 @@ export const NavBar = styled.div`
   padding: 20px;
   justify-content: left;
   height: auto;
-  height: 5%;
+  flex: 0.05 0;
 `
 
 export const MainDiv = styled.div`
   width: 100%;
-  height: calc(100vh - 40px);
+  height: calc(100vh - 10px);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 `
 
 export const ContentDiv = styled.div`
-  width: calc(100% - 40px);
-  height: calc(95% - 40px);
-  padding: 20px;
+  width: 100%;
+  display: flex;
+  flex: 0.95 0;
+  /* padding: 20px; */
 `
 
 export const NavBarLink = styled(Link)`
@@ -31,5 +35,9 @@ export const NavBarLink = styled(Link)`
   transition: 500ms;
   :hover {
     text-decoration-color: black;
+  }
+
+  @media (max-width: 350px) {
+    font-size: 16px;
   }
 `

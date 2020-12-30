@@ -1,5 +1,5 @@
 import { useHistory, useLocation } from 'react-router-dom'
-import { MainDiv, ResultsDiv, SearchDiv } from './styles'
+import { MainDiv, ResultsDiv, SearchDiv, SearchTitle } from './styles'
 import React from 'react'
 import SearchForm, { SearchFormValues } from './SearchForm'
 import { EnumGender, getGender } from './Select/Gender'
@@ -41,6 +41,7 @@ const SearchPage: React.FC = () => {
   return (
     <MainDiv>
       <SearchDiv>
+        <SearchTitle>Filtros de Busca</SearchTitle>
         <SearchForm
           values={{
             city: city,
@@ -56,6 +57,7 @@ const SearchPage: React.FC = () => {
         />
       </SearchDiv>
       <ResultsDiv>
+        <SearchTitle>Resultados da Busca</SearchTitle>
         <p>City: {city}</p>
       </ResultsDiv>
     </MainDiv>

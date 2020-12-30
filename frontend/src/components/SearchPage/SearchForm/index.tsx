@@ -5,7 +5,7 @@ import CurrencyField from '../../TextFields/CurrencyField'
 import FieldWithLabel from '../../TextFields/FieldWithLabel'
 import GenderSelect, { EnumGender } from '../Select/Gender'
 import PeopleSelect, { EnumPeople } from '../Select/People'
-import { SearchComponentDiv, SearchForm, TextField } from './styles'
+import { FieldsDiv, SearchForm, SubmitButton, SubmitDiv, TextField } from './styles'
 
 interface SearchFormProps {
   onSubmit(values: SearchFormValues): void
@@ -37,7 +37,7 @@ export default function SearchFormComponent({ onSubmit, values }: SearchFormProp
 
   return (
     <SearchForm onSubmit={handleSubmit(onSubmit)}>
-      <SearchComponentDiv>
+      <FieldsDiv>
         <FieldWithLabel labelFor="city-field" label="Cidade">
           <TextField ref={register} defaultValue={city} id="city-field" type="text" name="city" placeholder="Cidade" />
         </FieldWithLabel>
@@ -51,8 +51,6 @@ export default function SearchFormComponent({ onSubmit, values }: SearchFormProp
             placeholder="Bairro"
           />
         </FieldWithLabel>
-      </SearchComponentDiv>
-      <SearchComponentDiv>
         <FieldWithLabel labelFor="gender-field" label="Gênero">
           <Controller
             name="gender"
@@ -85,8 +83,6 @@ export default function SearchFormComponent({ onSubmit, values }: SearchFormProp
             )}
           />
         </FieldWithLabel>
-      </SearchComponentDiv>
-      <SearchComponentDiv>
         <FieldWithLabel labelFor="minValue-field" label="Valor Mínimo">
           <Controller
             name="minValue"
@@ -123,8 +119,6 @@ export default function SearchFormComponent({ onSubmit, values }: SearchFormProp
             )}
           />
         </FieldWithLabel>
-      </SearchComponentDiv>
-      <SearchComponentDiv>
         <FieldWithLabel labelFor="minArea-field" label="Área mínima">
           <Controller
             name="minArea"
@@ -159,8 +153,10 @@ export default function SearchFormComponent({ onSubmit, values }: SearchFormProp
             )}
           />
         </FieldWithLabel>
-      </SearchComponentDiv>
-      <button type="submit">Submit</button>
+      </FieldsDiv>
+      <SubmitDiv>
+        <SubmitButton type="submit">Procurar Moradias</SubmitButton>
+      </SubmitDiv>
     </SearchForm>
   )
 }

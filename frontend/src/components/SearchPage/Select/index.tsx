@@ -15,10 +15,8 @@ export default function Select({ options, SelectProps }: SelectProps): JSX.Eleme
   const customStyles = {
     control: (provided) => ({
       ...provided,
-      borderColor: 'hsl(0, 0%, 70%)',
-      boxShadow: 'hsl(0, 0%, 50%)',
       ':hover': {
-        borderColor: 'hsl(0, 0%, 20%)'
+        borderColor: '#2684ff'
       }
     })
   }
